@@ -1,0 +1,380 @@
+/* ==============================================
+   PAGE 2 - BIRTHDAY CELEBRATION
+   Giao diện sinh nhật với bánh kem và pháo bông
+   ============================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #8395e4 0%, #df6dab 100%);
+    min-height: 100vh;
+    color: white;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Canvas cho pháo bông */
+#fireworks {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Container chính */
+.container {
+    position: relative;
+    z-index: 2;
+    padding: 60px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+/* Tiêu đề */
+h1 {
+    font-size: 56px;
+    margin-bottom: 20px;
+    text-align: center;
+    animation: slideInTop 1s ease;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.subtitle {
+    font-size: 22px;
+    margin-bottom: 60px;
+    text-align: center;
+    max-width: 600px;
+    line-height: 1.6;
+    animation: fadeIn 1.5s ease;
+}
+
+/* ==============================================
+   LAYOUT CHÍNH - BÁNH KEM & VIDEO
+   📌 Chỉnh layout ở đây
+   ============================================== */
+.content-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 📌 2 cột bằng nhau */
+    gap: 60px; /* 📌 Khoảng cách giữa bánh kem và video */
+    align-items: center;
+    max-width: 1200px; /* 📌 Chiều rộng tối đa */
+    width: 100%;
+    margin-bottom: 60px;
+}
+
+/* ==============================================
+   BÁNH KEM ANIMATION
+   📌 Chỉnh kích thước bánh ở dòng 85
+   ============================================== */
+.cake-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: bounceIn 1.5s ease;
+}
+
+.cake {
+    position: relative;
+    width: 280px; /* 📌 DÒNG CHỈNH CHIỀU RỘNG BÁNH */
+    height: 320px; /* 📌 DÒNG CHỈNH CHIỀU CAO BÁNH */
+    transform-style: preserve-3d;
+}
+
+/* Nến trên bánh */
+.candles {
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 30px;
+    z-index: 10;
+}
+
+.candle {
+    width: 12px;
+    height: 60px;
+    background: linear-gradient(to bottom, #ff6b9d 0%, #ffd1dc 100%);
+    border-radius: 4px 4px 0 0;
+    position: relative;
+    box-shadow: 0 2px 10px rgba(255, 107, 157, 0.5);
+}
+
+/* Ngọn lửa nến */
+.flame {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 15px;
+    height: 25px;
+    background: radial-gradient(circle, #fff44f 0%, #ff6b35 50%, transparent 70%);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    animation: flicker 0.5s infinite alternate;
+}
+
+@keyframes flicker {
+    0% { transform: translateX(-50%) scale(1) translateY(0); }
+    100% { transform: translateX(-50%) scale(1.1) translateY(-3px); }
+}
+
+/* Tầng bánh 1 (trên cùng) */
+.layer-1 {
+    position: absolute;
+    bottom: 190px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 140px;
+    height: 60px;
+    background: linear-gradient(to bottom, #ff6b9d 0%, #f06292 100%);
+    border-radius: 10px 10px 0 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Tầng bánh 2 (giữa) */
+.layer-2 {
+    position: absolute;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 90px;
+    background: linear-gradient(to bottom, #ba68c8 0%, #9c27b0 100%);
+    border-radius: 10px 10px 0 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Tầng bánh 3 (dưới cùng) */
+.layer-3 {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 280px;
+    height: 80px;
+    background: linear-gradient(to bottom, #7e57c2 0%, #5e35b1 100%);
+    border-radius: 10px 10px 0 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Kem phủ trên bánh */
+.frosting {
+    position: absolute;
+    top: -5px;
+    left: 0;
+    width: 100%;
+    height: 15px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: inset 0 -2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Đĩa bánh */
+.plate {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 320px;
+    height: 20px;
+    background: linear-gradient(to bottom, #e0e0e0 0%, #bdbdbd 100%);
+    border-radius: 50%;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* ==============================================
+   VIDEO YOUTUBE
+   📌 Chỉnh kích thước video ở dòng 206-207
+   ============================================== */
+.video-container {
+    position: relative;
+    width: 100%; /* 📌 DÒNG CHỈNH CHIỀU RỘNG VIDEO */
+    padding-bottom: 56.25%; /* 📌 Tỉ lệ 16:9 (56.25% = 9/16 * 100) */
+    height: 0;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    animation: slideInRight 1.5s ease;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Button về trang chủ */
+.button-group {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    animation: fadeIn 2s ease;
+}
+
+button {
+    padding: 18px 40px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border: 2px solid white;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+    backdrop-filter: blur(10px);
+}
+
+button:hover {
+    background: white;
+    color: #667eea;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* ==============================================
+   ANIMATIONS
+   ============================================== */
+@keyframes slideInTop {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.3) translateY(50px);
+    }
+    50% {
+        transform: scale(1.05) translateY(-10px);
+    }
+    70% {
+        transform: scale(0.9) translateY(0);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* ==============================================
+   RESPONSIVE - MOBILE
+   ============================================== */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 36px;
+    }
+
+    .subtitle {
+        font-size: 18px;
+        margin-bottom: 40px;
+    }
+
+    /* 📌 Layout 1 cột trên mobile */
+    .content-wrapper {
+        grid-template-columns: 1fr; /* 📌 1 cột thay vì 2 */
+        gap: 40px;
+        padding: 0 20px;
+    }
+
+    /* 📌 Giảm kích thước bánh trên mobile */
+    .cake {
+        width: 200px; /* 📌 Bánh nhỏ hơn */
+        height: 240px;
+    }
+
+    .layer-1 {
+        width: 100px;
+        height: 50px;
+        bottom: 140px;
+    }
+
+    .layer-2 {
+        width: 140px;
+        height: 70px;
+        bottom: 70px;
+    }
+
+    .layer-3 {
+        width: 200px;
+        height: 70px;
+        bottom: 15px;
+    }
+
+    .plate {
+        width: 240px;
+    }
+
+    .candles {
+        gap: 20px;
+    }
+
+    .candle {
+        width: 10px;
+        height: 50px;
+    }
+
+    button {
+        width: 100%;
+    }
+}
+
+/* ==============================================
+   GHI CHÚ NHANH:
+   
+   📌 CHỈNH KÍCH THƯỚC:
+   - Chiều rộng bánh: Dòng 85
+   - Chiều cao bánh: Dòng 86
+   - Khoảng cách bánh & video: Dòng 69
+   - Chiều rộng video: Dòng 206
+   - Tỉ lệ video: Dòng 207 (16:9)
+   
+   📌 ĐỔI VIDEO YOUTUBE:
+   - Dòng 46: Thay link trong src="..."
+   
+   📝 RESPONSIVE:
+   - Desktop: 2 cột (bánh bên trái, video bên phải)
+   - Mobile: 1 cột (bánh trên, video dưới)
+   ============================================== */

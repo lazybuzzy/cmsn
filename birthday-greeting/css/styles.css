@@ -1,0 +1,472 @@
+/* ==============================================
+   IMPORT CSS CHUNG
+   ============================================== */
+@import url('base.css');
+
+/* ==============================================
+   GLOBAL STYLES
+   ============================================== */
+body {
+    font-family: var(--font-main);
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+/* ==============================================
+   SECTION 1: HERO SECTION (GIAO DIỆN ĐẦU TIÊN)
+   - Giao diện chào mừng với ảnh nền
+   - Có logo "Happy Birthday" góc trái trên
+   - 2 button: Quà sinh nhật & Hình kỉ niệm
+   - Scroll indicator góc phải dưới
+   ============================================== */
+.hero-section {
+    background: linear-gradient(var(--bg-overlay), var(--bg-overlay)), 
+                url('../assets/2B5EAE4E-D848-4D70-B5EC-B715A2E84FAE.jpg') no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed;
+    min-height: 100vh;
+    color: var(--text-primary);
+    position: relative;
+}
+
+/* Logo "Happy Birthday" - chỉ hiển thị ở section đầu */
+.logo {
+    position: absolute;
+    top: var(--logo-top);
+    left: var(--logo-left);
+    font-size: var(--font-size-logo);
+    font-weight: var(--font-weight-semibold);
+    color: var(--text-primary);
+    z-index: var(--z-index-logo);
+}
+
+/* Container chứa nội dung chính */
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    padding-left: var(--padding-container);
+    padding-right: var(--padding-container);
+}
+
+.content {
+    max-width: var(--content-max-width);
+}
+
+/* Subtitle nhỏ phía trên heading */
+.subtitle {
+    font-size: var(--font-size-subtitle);
+    letter-spacing: 3px;
+    color: var(--text-secondary);
+    margin-bottom: var(--margin-bottom-subtitle);
+    font-weight: var(--font-weight-medium);
+}
+
+/* Heading chính */
+h1 {
+    font-size: var(--font-size-heading);
+    line-height: var(--line-height-heading);
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--margin-bottom-heading);
+}
+
+/* Group 2 buttons */
+.button-group {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+/* Style chung cho buttons */
+.btn {
+    padding: var(--padding-button);
+    font-size: var(--font-size-button);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border: var(--border-width) solid var(--border-color);
+    background: transparent;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all var(--transition-speed) ease;
+    font-family: inherit;
+}
+
+.btn:hover {
+    background: var(--primary-color);
+    color: var(--text-dark);
+    transform: var(--hover-transform);
+}
+
+/* Button trắng (Quà sinh nhật) */
+.btn-primary {
+    background: var(--primary-color);
+    color: var(--text-dark);
+}
+
+.btn-primary:hover {
+    background: transparent;
+    color: var(--text-primary);
+}
+
+/* Button viền trong suốt (Hình kỉ niệm) */
+.btn-secondary {
+    background: transparent;
+    color: var(--text-primary);
+}
+
+/* ==============================================
+   SCROLL DOWN INDICATOR
+   - Hiển thị ở góc phải dưới section đầu
+   - Ẩn khi scroll xuống 50% viewport
+   - Click để scroll xuống section tiếp theo
+   ============================================== */
+.scroll-indicator {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    z-index: 500;
+    animation: bounce 2s infinite;
+    transition: opacity 0.3s ease, display 0.3s ease;
+}
+
+.scroll-arrow {
+    font-size: 24px;
+    color: var(--primary-color);
+    margin-bottom: 8px;
+    border: 2px solid var(--primary-color);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.scroll-text {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--primary-color);
+    font-weight: var(--font-weight-semibold);
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+}
+
+.scroll-indicator:hover .scroll-arrow {
+    background: var(--primary-color);
+    color: var(--text-dark);
+    transform: scale(1.1);
+}
+
+/* Animation bounce cho scroll indicator */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+/* ==============================================
+   SECTION 2: ABOUT SECTION (GIAO DIỆN THỨ 2)
+   - Background màu hồng gradient
+   - Hiển thị thông tin sinh nhật
+   - Stats grid: Years, Days, Moments, Memories
+   - Back to top button góc phải dưới
+   ============================================== */
+.about-section {
+    background: linear-gradient(135deg, #ff6b9d 0%, #c06c84 100%); /* 📌 DÒNG ĐỔI MÀU HỒNG */
+    min-height: 100vh;
+    padding: 100px var(--spacing-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    color: var(--text-primary);
+}
+
+.about-container {
+    max-width: 1200px;
+    width: 100%;
+    text-align: center;
+}
+
+/* Subtitle "A NEW CHAPTER" */
+.about-subtitle {
+    font-size: var(--font-size-subtitle);
+    letter-spacing: 3px;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 20px;
+    font-weight: var(--font-weight-medium);
+}
+
+/* Title "Your Special Day" */
+.about-title {
+    font-size: 72px;
+    font-weight: var(--font-weight-bold);
+    margin-bottom: 50px;
+    color: var(--text-primary);
+}
+
+/* Đoạn mô tả */
+.about-description {
+    font-size: 18px;
+    line-height: 1.8;
+    max-width: 900px;
+    margin: 0 auto 80px;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+/* ==============================================
+   STATS GRID - Hiển thị số liệu thống kê
+   - 4 cột trên desktop
+   - 2 cột trên mobile
+   ============================================== */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    margin-top: 60px;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 20px;
+}
+
+/* Số lớn (17, 5, ...) */
+.stat-number {
+    font-size: 72px;
+    font-weight: var(--font-weight-bold);
+    color: var(--text-primary);
+    margin-bottom: 15px;
+    line-height: 1;
+}
+
+/* Label bên dưới số */
+.stat-label {
+    font-size: 16px;
+    font-weight: var(--font-weight-medium);
+    color: rgba(255, 255, 255, 0.9);
+    letter-spacing: 1px;
+}
+
+/* ==============================================
+   SECTION 3: GALLERY SECTION (GIAO DIỆN THỨ 3)
+   - Hiển thị ảnh kỷ niệm dạng grid
+   - Background màu đen
+   - 10 ảnh xếp theo grid layout giống mẫu
+   ============================================== */
+.gallery-section {
+    background: #0a0a0a; /* 📌 DÒNG ĐỔI MÀU NỀN GALLERY */
+    min-height: 100vh;
+    padding: 100px 40px; /* 📌 DÒNG CHỈNH PADDING */
+    color: var(--text-primary);
+}
+
+.gallery-container {
+    max-width: 100%; /* 📌 DÒNG CHỈNH CHIỀU RỘNG TỐI ĐA GALLERY */
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Subtitle "RECENT WORKS" */
+.gallery-subtitle {
+    font-size: var(--font-size-subtitle);
+    letter-spacing: 3px;
+    color: #39b385;
+    margin-bottom: 20px;
+    font-weight: var(--font-weight-medium);
+}
+
+/* Title Gallery */
+.gallery-title {
+    font-size: 42px; /* 📌 DÒNG CHỈNH KÍCH THƯỚC CHỮ TIÊU ĐỀ */
+    font-weight: var(--font-weight-bold);
+    margin-bottom: 80px;
+    color: var(--text-primary);
+    line-height: 1.4;
+    max-width: 800px; /* 📌 DÒNG CHỈNH CHIỀU RỘNG TIÊU ĐỀ */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ==============================================
+   GALLERY GRID - Layout ảnh giống mẫu
+   📌 CÁC DÒNG QUAN TRỌNG ĐỂ CHỈNH KÍCH THƯỚC ẢNH
+   ============================================== */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 📌 DÒNG CHỈNH 4 CỘT giống mẫu */
+    gap: 10px; /* 📌 DÒNG CHỈNH KHOẢNG CÁCH GIỮA CÁC ẢNH (nhỏ hơn) */
+    margin: 0 auto;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 1/1; /* 📌 DÒNG CHỈNH TỈ LỆ ẢNH VUÔNG giống mẫu */
+    border-radius: 0; /* 📌 BỎ BORDER RADIUS */
+}
+
+/* 📌 BỎ HOVER EFFECT */
+.gallery-item:hover {
+    transform: none; /* Bỏ hiệu ứng scale khi hover */
+}
+
+.gallery-item img {
+    width: 100%; /* 📌 DÒNG CHỈNH CHIỀU RỘNG ẢNH (100% = full width) */
+    height: 100%; /* 📌 DÒNG CHỈNH CHIỀU CAO ẢNH (100% = full height) */
+    object-fit: cover; /* 📌 DÒNG CHỈNH CÁCH ẢNH HIỂN THỊ (cover/contain/fill) */
+    object-position: center; /* 📌 DÒNG CĂN ẢNH (center/top/bottom/left/right) */
+    display: block;
+}
+
+/* ==============================================
+   BACK TO TOP BUTTON
+   - Hiển thị khi scroll xuống > 1 viewport
+   - Click để scroll về đầu trang
+   - Fixed ở góc phải dưới
+   ============================================== */
+.back-to-top {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    width: 50px;
+    height: 50px;
+    background: rgba(10, 10, 10, 0.8);
+    color: var(--text-primary);
+    border: 2px solid var(--text-primary);
+    border-radius: 5px;
+    font-size: 24px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 500;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+}
+
+.back-to-top:hover {
+    background: var(--text-primary);
+    color: var(--text-dark);
+    transform: translateY(-5px);
+}
+
+/* ==============================================
+   RESPONSIVE - MOBILE STYLES
+   - Áp dụng khi màn hình < 768px
+   - Layout 1 cột cho buttons
+   - Stats grid thành 2 cột
+   - Gallery grid thành 2 cột
+   - Font size nhỏ hơn
+   ============================================== */
+@media (max-width: 768px) {
+    .container {
+        padding: var(--padding-container);
+        padding-top: 100px;
+    }
+
+    h1 {
+        font-size: var(--font-size-heading);
+    }
+
+    .button-group {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .scroll-indicator {
+        bottom: 20px;
+        right: 20px;
+    }
+
+    .scroll-arrow {
+        width: 35px;
+        height: 35px;
+        font-size: 20px;
+    }
+
+    .scroll-text {
+        font-size: 9px;
+    }
+
+    .about-title {
+        font-size: 48px;
+    }
+
+    .about-description {
+        font-size: 16px;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+
+    .stat-number {
+        font-size: 48px;
+    }
+
+    .stat-label {
+        font-size: 14px;
+    }
+
+    /* Gallery responsive */
+    .gallery-section {
+        padding: 60px 20px;
+    }
+
+    .gallery-title {
+        font-size: 28px;
+        margin-bottom: 40px;
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr); /* 📌 DÒNG CHỈNH 2 CỘT TRÊN MOBILE */
+        gap: 8px;
+    }
+
+    .back-to-top {
+        width: 45px;
+        height: 45px;
+        bottom: 20px;
+        right: 20px;
+    }
+}
+
+/* ==============================================
+   GHI CHÚ NHANH:
+   
+   🎯 TÌM KIẾM NHANH:
+   - SECTION 1 (Hero): Tìm "HERO SECTION"
+   - SECTION 2 (About): Tìm "ABOUT SECTION" - MÀU HỒNG
+   - SECTION 3 (Gallery): Tìm "GALLERY SECTION"
+   - Scroll indicator: Tìm "SCROLL DOWN INDICATOR"
+   - Back to top: Tìm "BACK TO TOP BUTTON"
+   - Stats: Tìm "STATS GRID"
+   - Mobile: Tìm "RESPONSIVE"
+   
+   📝 CHỈNH KÍCH THƯỚC & CĂN GIỮA ẢNH GALLERY:
+   - Số cột: Dòng 303 (grid-template-columns: 4 cột)
+   - Khoảng cách ảnh: Dòng 304 (gap: 10px)
+   - Tỉ lệ ảnh: Dòng 311 (aspect-ratio: 1/1 vuông)
+   - Hover: Đã bỏ (dòng 316)
+   - Màu nền gallery: Dòng 281 (background: #0a0a0a)
+   - Màu hồng section 2: Dòng 193
+   ============================================== */

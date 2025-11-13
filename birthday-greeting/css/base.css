@@ -1,0 +1,120 @@
+/* ==============================================
+   BIẾN CSS CHUNG - QUẢN LÝ MÀU SẮC & FONT CHỮ
+   ============================================== */
+
+:root {
+    /* ===== MÀU CHỦ ĐẠO ===== */
+    --primary-color: #ffffff;
+    --secondary-color: #0a0a0a;
+    --accent-color: #667eea;
+    --accent-color-2: #db5bd5;
+    
+    /* ===== MÀU NỀN ===== */
+    --bg-overlay: rgba(0, 0, 0, 0.7);
+    --bg-overlay-light: rgba(0, 0, 0, 0.5);
+    --bg-button-hover: rgba(255, 255, 255, 0.1);
+    
+    /* ===== MÀU CHỮ ===== */
+    --text-primary: #ffffff;
+    --text-secondary: #8a8a8a;
+    --text-dark: #0a0a0a;
+    --text-muted: #c0c0c0;
+    
+    /* ===== FONT CHỮ ===== */
+    --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --font-heading: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+    /* ===== KÍCH THƯỚC FONT ===== */
+    --font-size-logo: 32px;
+    --font-size-heading: 56px;
+    --font-size-subtitle: 14px;
+    --font-size-button: 14px;
+    --font-size-text: 16px;
+    
+    /* ===== FONT WEIGHT ===== */
+    --font-weight-light: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    
+    /* ===== KHOẢNG CÁCH ===== */
+    --spacing-xs: 10px;
+    --spacing-sm: 20px;
+    --spacing-md: 30px;
+    --spacing-lg: 40px;
+    --spacing-xl: 60px;
+    
+    /* ===== PADDING/MARGIN CHUNG ===== */
+    --padding-button: 18px 40px;
+    --padding-container: 100px;
+    --margin-bottom-heading: 60px;
+    --margin-bottom-subtitle: 30px;
+    
+    /* ===== BORDER & RADIUS ===== */
+    --border-width: 2px;
+    --border-radius: 5px;
+    --border-color: #ffffff;
+    
+    /* ===== HIỆU ỨNG ===== */
+    --transition-speed: 0.3s;
+    --hover-transform: translateY(-2px);
+    --box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    
+    /* ===== Z-INDEX ===== */
+    --z-index-logo: 1000;
+    --z-index-menu: 999;
+    --z-index-overlay: 100;
+    
+    /* ===== POSITION FIXED ===== */
+    --logo-top: 30px;
+    --logo-left: 30px;
+    
+    /* ===== LAYOUT ===== */
+    --content-max-width: 900px;
+    --line-height-heading: 1.3;
+}
+
+/* ===== RESPONSIVE BREAKPOINTS ===== */
+:root {
+    --mobile-breakpoint: 768px;
+    --tablet-breakpoint: 1024px;
+    --desktop-breakpoint: 1440px;
+}
+
+/* ===== FONT SIZE RESPONSIVE ===== */
+@media (max-width: 768px) {
+    :root {
+        --font-size-logo: 24px;
+        --font-size-heading: 36px;
+        --font-size-subtitle: 12px;
+        --padding-container: 20px;
+    }
+}
+
+/* ===== RESET & BASE STYLES ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ===== UTILITY CLASSES ===== */
+.text-primary {
+    color: var(--text-primary);
+}
+
+.text-secondary {
+    color: var(--text-secondary);
+}
+
+.text-muted {
+    color: var(--text-muted);
+}
+
+.font-main {
+    font-family: var(--font-main);
+}
+
+.font-heading {
+    font-family: var(--font-heading);
+}
